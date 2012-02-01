@@ -4,6 +4,6 @@ public interface Heading {
 
 	void turnLeft(Rover rover);
 	void turnRight(Rover rover);
-	void move(Rover rover);
-	String getPosition();
+	void move(Coordinate coordenada);
+	String getOrientation();
 }

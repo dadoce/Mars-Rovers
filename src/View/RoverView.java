@@ -1,34 +1,39 @@
 package View;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import model.Plateaus;
+import model.Rover;
 
 import controller.RoverController;
 
 public class RoverView {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		RoverController roverController = new RoverController();
-		ArrayList<String> inputLines = new ArrayList<String>();
-		
-		//Change the input as you want :)
-		//I wanted to make a better interface and improve codes and tests
-		//but didn't have enough time.
-		inputLines.add("5 5");
-		inputLines.add("1 2 N");
-		inputLines.add("LMLMLMLMM");
-		inputLines.add("3 3 E");
-		inputLines.add("MMRMMRMRRM");
-		
-		roverController.setInputLines(inputLines);
-		roverController.setUpCoordinatesAndInstructions();
-		roverController.demandRovesToDivideAndConquerTerritory();
-		String result = roverController.getRoversCoordinatesAndHeadings();
-		
-		System.out.println(result);
+
+		Plateaus plateaus = new Plateaus("5 5");
+		RoverController roverController = new RoverController(plateaus);
+
+		Map<String, String> inputLines = new HashMap<String, String>();
+		inputLines.put("1 2 N", "LMLMLMLMM");
+		inputLines.put("3 3 E", "MMRMMRMRRM");
+
+		roverController.controlRover(inputLines);
+
+		System.out.println(showRoversCoordinatesAndHeadings(roverController));
 	}
 
+	public static String showRoversCoordinatesAndHeadings(
+			RoverController controller) {
+		StringBuilder output = new StringBuilder();
+
+		for (Rover rover : controller.getRovers())
+			output.append(rover.getCoordenada().getX() + " "
+					+ rover.getCoordenada().getY() + " "
+					+ rover.getOrientacion() + "\n");
+
+		return output.toString();
+	}
 }

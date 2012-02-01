@@ -13,13 +13,13 @@ public class HeadingToWest implements Heading{
 	}
 
 	@Override
-	public String getPosition() {
+	public String getOrientation() {
 		return "W";
 	}
 
 	@Override
-	public void move(Rover rover) {
-		rover.setXCoordinate(rover.getXCoordinate() - 1);
+	public void move(Coordinate coordinate) {
+		coordinate.setX(coordinate.getX() - 1);
 	}
 
 }

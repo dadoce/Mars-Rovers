@@ -13,12 +13,12 @@ public class HeadingToNorth implements Heading {
 	}
 
 	@Override
-	public void move(Rover rover) {
-		rover.setYCoordinate(rover.getYCoordinate() + 1);
+	public void move(Coordinate coordinate) {
+		coordinate.setY(coordinate.getY() + 1);
 	}
 
 	@Override
-	public String getPosition() {
+	public String getOrientation() {
 		return "N";
 	}
 
