@@ -1,6 +1,7 @@
 package modelTest;
 
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import model.Coordinate;
 import model.Heading;
 import model.HeadingToEast;
@@ -19,56 +20,64 @@ public class RoverTest {
 	public void shouldFaceNorthIfRoverFacingEastTurnsLeft() {
 		rover = getRover(0, 0, new HeadingToEast());
 		rover.turn("L");
-		Assert.assertTrue(rover.getOrientacion().equals("N"));
+		
+		assertEquals("N", rover.getOrientacion());
 	}
 
 	@Test
 	public void shouldFaceSouthIfRoverFacingEastTurnsRight() {
 		rover = getRover(0, 0, new HeadingToEast());
 		rover.turn("R");
-		Assert.assertTrue(rover.getOrientacion().equals("S"));
+		
+		assertEquals("S", rover.getOrientacion());
 	}
 
 	@Test
 	public void shouldFaceWestIfRoverFacingNorthTurnsLeft() {
 		rover = getRover(0, 0, new HeadingToNorth());
 		rover.turn("L");
-		Assert.assertTrue(rover.getOrientacion().equals("W"));
+		
+		assertEquals("W", rover.getOrientacion());
 	}
 
 	@Test
 	public void shouldFaceEastIfRoverFacingNorthTurnsRight() {
 		rover = getRover(0, 0, new HeadingToNorth());
 		rover.turn("R");
-		Assert.assertTrue(rover.getOrientacion().equals("E"));
+		
+		assertEquals("E", rover.getOrientacion());
 	}
 
 	@Test
 	public void shouldFaceSouthIfRoverFacingWestTurnsLeft() {
 		rover = getRover(0, 0, new HeadingToWest());
 		rover.turn("L");
-		Assert.assertTrue(rover.getOrientacion().equals("S"));
+		
+		assertEquals("S", rover.getOrientacion());
 	}
 
 	@Test
 	public void shouldFaceNorthIfRoverFacingWestTurnsRight() {
 		rover = getRover(0, 0, new HeadingToWest());
 		rover.turn("R");
-		Assert.assertTrue(rover.getOrientacion().equals("N"));
+		
+		assertEquals("N", rover.getOrientacion());
 	}
 
 	@Test
 	public void shouldFaceEastIfRoverFacingSouthTurnsLeft() {
 		rover = getRover(0, 0, new HeadingToSouth());
 		rover.turn("L");
-		Assert.assertTrue(rover.getOrientacion().equals("E"));
+		
+		assertEquals("E", rover.getOrientacion());
 	}
 
 	@Test
 	public void shouldFaceWestIfRoverFacingSouthTurnsRight() {
 		rover = getRover(0, 0, new HeadingToSouth());
 		rover.turn("R");
-		Assert.assertTrue(rover.getOrientacion().equals("W"));
+		
+		assertEquals("W", rover.getOrientacion());
 	}
 
 	@Test
@@ -76,7 +85,7 @@ public class RoverTest {
 		rover = getRover(0, 0, new HeadingToEast());
 		rover.move();
 
-		Assert.assertTrue(rover.getCoordenada().equals(new Coordinate(1, 0)));
+		assertTrue(rover.getCoordenada().equals(new Coordinate(1, 0)));
 	}
 
 	@Test
@@ -84,7 +93,7 @@ public class RoverTest {
 		rover = getRover(0, 0, new HeadingToNorth());
 		rover.move();
 
-		Assert.assertTrue(rover.getCoordenada().equals(new Coordinate(0, 1)));
+		assertTrue(rover.getCoordenada().equals(new Coordinate(0, 1)));
 	}
 
 	@Test
@@ -92,7 +101,7 @@ public class RoverTest {
 		rover = getRover(1, 0, new HeadingToWest());
 		rover.move();
 
-		Assert.assertTrue(rover.getCoordenada().equals(new Coordinate(0, 0)));
+		assertTrue(rover.getCoordenada().equals(new Coordinate(0, 0)));
 	}
 
 	@Test
@@ -100,7 +109,7 @@ public class RoverTest {
 		rover = getRover(0, 1, new HeadingToSouth());
 		rover.move();
 
-		Assert.assertTrue(rover.getCoordenada().equals(new Coordinate(0, 0)));
+		assertTrue(rover.getCoordenada().equals(new Coordinate(0, 0)));
 	}
 
 	private Rover getRover(final int x, final int y, final Heading heading) {
